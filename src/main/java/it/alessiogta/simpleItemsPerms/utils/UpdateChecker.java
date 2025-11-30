@@ -14,20 +14,17 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 /**
- * Controlla automaticamente se ci sono aggiornamenti disponibili
- * su Spigot e Modrinth
+ * Controlla automaticamente se ci sono aggiornamenti disponibili su Modrinth
  */
 public class UpdateChecker {
 
     private final SimpleItemsPerms plugin;
     private final String currentVersion;
 
-    // IDs per le API
-    private static final String SPIGOT_RESOURCE_ID = "119801"; // Sostituisci con il tuo ID Spigot quando pubblichi
+    // Modrinth project slug
     private static final String MODRINTH_PROJECT_ID = "simpleitemsperms"; // Sostituisci con il tuo project slug
 
-    // URLs API
-    private static final String SPIGOT_API = "https://api.spigotmc.org/legacy/update.php?resource=";
+    // Modrinth API URL
     private static final String MODRINTH_API = "https://api.modrinth.com/v2/project/";
 
     // Cache
@@ -59,7 +56,7 @@ public class UpdateChecker {
 
         CompletableFuture.runAsync(() -> {
             try {
-                // Prova prima Modrinth (più affidabile)
+                // Controlla aggiornamenti su Modrinth
                 if (checkModrinth()) {
                     lastCheck = System.currentTimeMillis();
                     Bukkit.getScheduler().runTask(plugin, () ->
@@ -70,27 +67,12 @@ public class UpdateChecker {
                             changelog
                         ))
                     );
-                    return;
-                }
-
-                // Fallback a Spigot
-                if (checkSpigot()) {
-                    lastCheck = System.currentTimeMillis();
+                } else {
+                    // Modrinth non disponibile o errore
                     Bukkit.getScheduler().runTask(plugin, () ->
-                        callback.accept(new UpdateResult(
-                            isUpdateAvailable(),
-                            latestVersion,
-                            downloadUrl,
-                            changelog
-                        ))
+                        callback.accept(new UpdateResult(false, null, null, null))
                     );
-                    return;
                 }
-
-                // Nessuna API ha funzionato
-                Bukkit.getScheduler().runTask(plugin, () ->
-                    callback.accept(new UpdateResult(false, null, null, null))
-                );
 
             } catch (Exception e) {
                 plugin.getLogger().warning("Failed to check for updates: " + e.getMessage());
@@ -99,39 +81,6 @@ public class UpdateChecker {
                 );
             }
         });
-    }
-
-    /**
-     * Controlla aggiornamenti su Spigot
-     */
-    private boolean checkSpigot() {
-        try {
-            URL url = new URL(SPIGOT_API + SPIGOT_RESOURCE_ID);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
-
-            int responseCode = connection.getResponseCode();
-            if (responseCode != 200) {
-                return false;
-            }
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String version = reader.readLine();
-            reader.close();
-
-            if (version != null && !version.isEmpty()) {
-                latestVersion = version;
-                downloadUrl = "https://www.spigotmc.org/resources/simpleitemsperms." + SPIGOT_RESOURCE_ID + "/";
-                changelog = null; // Spigot API non fornisce changelog
-                return true;
-            }
-
-        } catch (Exception e) {
-            plugin.getLogger().fine("Spigot update check failed: " + e.getMessage());
-        }
-        return false;
     }
 
     /**
@@ -251,7 +200,7 @@ public class UpdateChecker {
         java.util.Map<String, String> placeholders = new java.util.HashMap<>();
         placeholders.put("{current}", currentVersion);
         placeholders.put("{latest}", latestVersion);
-        placeholders.put("{url}", downloadUrl != null ? downloadUrl : "https://github.com/Ghibli/SimpleItemsPerm");
+        placeholders.put("{url}", downloadUrl != null ? downloadUrl : "https://modrinth.com/plugin/" + MODRINTH_PROJECT_ID);
 
         msgManager.sendMessage(player, "update-available", placeholders);
 

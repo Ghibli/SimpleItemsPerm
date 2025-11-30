@@ -317,7 +317,7 @@ public class SipCommand implements CommandExecutor {
                 Map<String, String> placeholders = new HashMap<>();
                 placeholders.put("{current}", plugin.getUpdateChecker().getCurrentVersion());
                 placeholders.put("{latest}", result.latestVersion);
-                placeholders.put("{url}", result.downloadUrl != null ? result.downloadUrl : "https://github.com/Ghibli/SimpleItemsPerm");
+                placeholders.put("{url}", result.downloadUrl != null ? result.downloadUrl : "https://modrinth.com/plugin/simpleitemsperms");
 
                 plugin.getMessageManager().sendMessage(sender, "update-available", placeholders);
                 if (result.downloadUrl != null) {
