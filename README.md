@@ -1,6 +1,6 @@
 # SimpleItemsPerms
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.1.1-blue)
 ![Minecraft](https://img.shields.io/badge/minecraft-1.21.3+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
