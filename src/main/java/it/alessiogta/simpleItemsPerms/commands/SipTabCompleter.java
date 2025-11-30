@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class SipTabCompleter implements TabCompleter {
     
     private static final List<String> SUBCOMMANDS = Arrays.asList(
-            "gui", "give", "remove", "check", "list", "info", "reload"
+            "gui", "give", "remove", "check", "list", "info", "reload", "update"
     );
     
     @Override

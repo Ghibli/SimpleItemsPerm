@@ -68,3 +68,10 @@ block-sound:
 
 # Debug system
 debug: false
+
+# Update Checker
+update-checker:
+  enabled: true                    # Enable automatic update checking
+  check-on-startup: true           # Check for updates when server starts
+  notify-admins-on-join: true      # Notify admins when they join if update available
+  check-interval: 3600             # Check every X seconds (3600 = 1 hour)

@@ -94,7 +94,10 @@ public class SipCommand implements CommandExecutor {
                 
             case "reload":
                 return handleReload(sender);
-                
+
+            case "update":
+                return handleUpdate(sender);
+
             default:
                 plugin.getMessageManager().sendInfo(sender);
                 return true;
@@ -286,10 +289,45 @@ public class SipCommand implements CommandExecutor {
             plugin.getMessageManager().sendMessage(sender, "no-permission");
             return true;
         }
-        
+
         plugin.reload();
         plugin.getMessageManager().sendMessage(sender, "reload-success");
-        
+
+        return true;
+    }
+
+    private boolean handleUpdate(CommandSender sender) {
+        if (!sender.hasPermission("simpleitemsperms.admin")) {
+            plugin.getMessageManager().sendMessage(sender, "no-permission");
+            return true;
+        }
+
+        // Controlla se l'update checker è abilitato
+        if (plugin.getUpdateChecker() == null) {
+            sender.sendMessage(plugin.getMessageManager().getMessage("update-error"));
+            return true;
+        }
+
+        // Invia messaggio "controllo..."
+        plugin.getMessageManager().sendMessage(sender, "update-checking");
+
+        // Controlla aggiornamenti in modo asincrono
+        plugin.getUpdateChecker().checkForUpdates(result -> {
+            if (result.updateAvailable) {
+                Map<String, String> placeholders = new HashMap<>();
+                placeholders.put("{current}", plugin.getUpdateChecker().getCurrentVersion());
+                placeholders.put("{latest}", result.latestVersion);
+                placeholders.put("{url}", result.downloadUrl != null ? result.downloadUrl : "https://github.com/Ghibli/SimpleItemsPerm");
+
+                plugin.getMessageManager().sendMessage(sender, "update-available", placeholders);
+                if (result.downloadUrl != null) {
+                    plugin.getMessageManager().sendMessage(sender, "update-download", placeholders);
+                }
+            } else {
+                plugin.getMessageManager().sendMessage(sender, "update-not-available");
+            }
+        });
+
         return true;
     }
 }

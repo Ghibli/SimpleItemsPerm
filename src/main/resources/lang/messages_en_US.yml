@@ -76,6 +76,7 @@ info:
   - "&e/sip check &7- Check item permission"
   - "&e/sip list &7- List all registered items"
   - "&e/sip reload &7- Reload configuration"
+  - "&e/sip update &7- Check for plugin updates"
   - "&e/sip info &7- Show this information"
   - "&8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
@@ -146,3 +147,10 @@ item-blocked:
   place: "{prefix} &cYou don't have permission to place this item! &7(simpleitemsperms.{permission})"
   attack: "{prefix} &cYou don't have permission to attack with this item! &7(simpleitemsperms.{permission})"
   shoot: "{prefix} &cYou don't have permission to use this bow! &7(simpleitemsperms.{permission})"
+
+# Update Checker messages
+update-available: "{prefix} &6⚠ &eNew version available! &7Current: &c{current} &7→ Latest: &a{latest}"
+update-download: "{prefix} &aDownload: &b&n{url}"
+update-checking: "{prefix} &7Checking for updates..."
+update-not-available: "{prefix} &aYou are using the latest version!"
+update-error: "{prefix} &cFailed to check for updates. Check your internet connection."

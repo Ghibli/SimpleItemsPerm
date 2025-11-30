@@ -7,6 +7,7 @@ import it.alessiogta.simpleItemsPerms.metrics.Metrics;
 import it.alessiogta.simpleItemsPerms.utils.ConfigManager;
 import it.alessiogta.simpleItemsPerms.utils.MessageManager;
 import it.alessiogta.simpleItemsPerms.utils.ItemRegistry;
+import it.alessiogta.simpleItemsPerms.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,6 +29,7 @@ public class SimpleItemsPerms extends JavaPlugin {
     private ConfigManager configManager;
     private MessageManager messageManager;
     private ItemRegistry itemRegistry;
+    private UpdateChecker updateChecker;
 
     @Override
     public void onEnable() {
@@ -65,6 +67,9 @@ public class SimpleItemsPerms extends JavaPlugin {
             it.alessiogta.simpleItemsPerms.gui.PermissionGUI.cleanupExpiredTokens();
         }, 6000L, 6000L); // 6000 ticks = 5 minuti
 
+        // Inizializza Update Checker
+        initUpdateChecker();
+
         getLogger().info("Plugin abilitato con successo!");
     }
 
@@ -88,6 +93,7 @@ public class SimpleItemsPerms extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
         getServer().getPluginManager().registerEvents(new ProjectileShootListener(this), this);
         getServer().getPluginManager().registerEvents(new LoreUpdateListener(this), this);
+        getServer().getPluginManager().registerEvents(new UpdateNotificationListener(this), this);
     }
 
     public void reload() {
@@ -110,6 +116,10 @@ public class SimpleItemsPerms extends JavaPlugin {
 
     public ItemRegistry getItemRegistry() {
         return itemRegistry;
+    }
+
+    public UpdateChecker getUpdateChecker() {
+        return updateChecker;
     }
 
     /**
@@ -207,10 +217,62 @@ public class SimpleItemsPerms extends JavaPlugin {
             }));
 
             getLogger().info("✓ bStats metrics abilitato con 6 custom charts!");
-            
+
         } catch (Exception e) {
             getLogger().warning("Impossibile inizializzare bStats: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Inizializza l'Update Checker
+     */
+    private void initUpdateChecker() {
+        // Controlla se l'update checker è abilitato
+        if (!getConfig().getBoolean("update-checker.enabled", true)) {
+            getLogger().info("Update Checker disabilitato nella configurazione");
+            return;
+        }
+
+        try {
+            updateChecker = new UpdateChecker(this);
+            getLogger().info("✓ Update Checker inizializzato");
+
+            // Controlla aggiornamenti all'avvio se configurato
+            if (getConfig().getBoolean("update-checker.check-on-startup", true)) {
+                getServer().getScheduler().runTaskLaterAsynchronously(this, () -> {
+                    updateChecker.checkForUpdates(result -> {
+                        if (result.updateAvailable) {
+                            getLogger().info("╔═══════════════════════════════════════════════════════════════╗");
+                            getLogger().info("║           🎉 NEW VERSION AVAILABLE! 🎉                       ║");
+                            getLogger().info("║  Current: " + updateChecker.getCurrentVersion() + "  →  Latest: " + result.latestVersion + "                           ║");
+                            if (result.downloadUrl != null) {
+                                getLogger().info("║  Download: " + result.downloadUrl);
+                            }
+                            getLogger().info("╚═══════════════════════════════════════════════════════════════╝");
+                        } else {
+                            getLogger().info("✓ Plugin is up to date! (v" + updateChecker.getCurrentVersion() + ")");
+                        }
+                    });
+                }, 100L); // 5 secondi dopo l'avvio
+            }
+
+            // Avvia task periodico se configurato
+            int checkInterval = getConfig().getInt("update-checker.check-interval", 3600);
+            if (checkInterval > 0) {
+                long intervalTicks = checkInterval * 20L; // Converti secondi in ticks
+                getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
+                    updateChecker.checkForUpdates(result -> {
+                        if (result.updateAvailable) {
+                            getLogger().info("Update available: " + result.latestVersion);
+                        }
+                    });
+                }, intervalTicks, intervalTicks);
+                getLogger().info("✓ Automatic update check every " + checkInterval + " seconds");
+            }
+
+        } catch (Exception e) {
+            getLogger().warning("Failed to initialize Update Checker: " + e.getMessage());
         }
     }
 }
