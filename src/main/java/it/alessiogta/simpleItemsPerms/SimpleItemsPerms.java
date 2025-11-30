@@ -35,11 +35,8 @@ public class SimpleItemsPerms extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        // ASCII Art
-        getLogger().info("╔═══════════════════════════════════════════════════════════════╗");
-        getLogger().info("║              SimpleItemsPerms v1.1.0                          ║");
-        getLogger().info("║          Developed with ❤ by AlessioGTAII                    ║");
-        getLogger().info("╚═══════════════════════════════════════════════════════════════╝");
+        // Startup banner
+        printStartupBanner();
 
         // Salva config e file di default
         saveDefaultConfig();
@@ -75,10 +72,7 @@ public class SimpleItemsPerms extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("╔═══════════════════════════════════════════════════════════════╗");
-        getLogger().info("║              SimpleItemsPerms disabilitato                    ║");
-        getLogger().info("║              Grazie per aver usato il plugin!                 ║");
-        getLogger().info("╚═══════════════════════════════════════════════════════════════╝");
+        getLogger().info("SimpleItemsPerms disabilitato. Grazie per aver usato il plugin!");
     }
 
     private void registerListeners() {
@@ -243,13 +237,13 @@ public class SimpleItemsPerms extends JavaPlugin {
                 getServer().getScheduler().runTaskLaterAsynchronously(this, () -> {
                     updateChecker.checkForUpdates(result -> {
                         if (result.updateAvailable) {
-                            getLogger().info("╔═══════════════════════════════════════════════════════════════╗");
-                            getLogger().info("║           🎉 NEW VERSION AVAILABLE! 🎉                       ║");
-                            getLogger().info("║  Current: " + updateChecker.getCurrentVersion() + "  →  Latest: " + result.latestVersion + "                           ║");
+                            getLogger().info(" ");
+                            getLogger().info("§e⚠ NEW VERSION AVAILABLE!");
+                            getLogger().info("§7Current: §c" + updateChecker.getCurrentVersion() + " §7→ Latest: §a" + result.latestVersion);
                             if (result.downloadUrl != null) {
-                                getLogger().info("║  Download: " + result.downloadUrl);
+                                getLogger().info("§7Download: §b" + result.downloadUrl);
                             }
-                            getLogger().info("╚═══════════════════════════════════════════════════════════════╝");
+                            getLogger().info(" ");
                         } else {
                             getLogger().info("✓ Plugin is up to date! (v" + updateChecker.getCurrentVersion() + ")");
                         }
@@ -274,5 +268,21 @@ public class SimpleItemsPerms extends JavaPlugin {
         } catch (Exception e) {
             getLogger().warning("Failed to initialize Update Checker: " + e.getMessage());
         }
+    }
+
+    /**
+     * Stampa il banner di avvio pulito e minimal
+     */
+    private void printStartupBanner() {
+        String version = getDescription().getVersion();
+
+        Bukkit.getConsoleSender().sendMessage("§6=============================================");
+        Bukkit.getConsoleSender().sendMessage(" ");
+        Bukkit.getConsoleSender().sendMessage("   §6§lSimple Items Perms §7(v" + version + ")");
+        Bukkit.getConsoleSender().sendMessage("   §7Developed with §c♥ §7by §fAlessioGTAII");
+        Bukkit.getConsoleSender().sendMessage(" ");
+        Bukkit.getConsoleSender().sendMessage("   §aThe plugin that respects permissions!");
+        Bukkit.getConsoleSender().sendMessage(" ");
+        Bukkit.getConsoleSender().sendMessage("§6=============================================");
     }
 }
