@@ -1,0 +1,70 @@
+# ╔═══════════════════════════════════════════════════════════════╗
+# ║              SimpleItemsPerms - Configuration                 ║
+# ║          Developed with ❤ by AlessioGTAII                    ║
+# ╚═══════════════════════════════════════════════════════════════╝
+
+# Language / Lingua
+# Supported languages: en_US (English), it_IT (Italiano)
+# Change this to switch the plugin language
+language: "en_US"
+
+# Message prefix
+prefix: "&8[&6SimpleItemsPerms&8]&r"
+
+# GUI Configuration
+gui:
+  title: "&6Assign Permission to Items"
+  size: 54  # Must be multiple of 9 (9, 18, 27, 36, 45, 54)
+  
+  # Confirm button
+  confirm-button:
+    slot: 49
+    material: LIME_CONCRETE
+    name: "&a&lCONFIRM"
+    lore:
+      - "&7Click to confirm"
+      - "&7permission assignment"
+  
+  # Cancel button
+  cancel-button:
+    slot: 53
+    material: RED_CONCRETE
+    name: "&c&lCANCEL"
+    lore:
+      - "&7Click to cancel"
+      - "&7and close the GUI"
+
+# Lore Configuration
+lore:
+  # Lore text is now defined in language files:
+  # - lang/messages_en_US.yml: lore-no-permission
+  # - lang/messages_it_IT.yml: lore-no-permission
+  
+  # Hide lore for players who HAVE the permission
+  hide-for-permitted-players: true
+  
+  # Lore position (start or end)
+  position: "end"  # Options: "start", "end"
+
+# Events to block for players without permission
+blocked-events:
+  use-item: true              # Right/left click
+  equip-armor: true           # Equipping armor
+  consume: true               # Eating/drinking potions
+  drop: false                 # Dropping the item (ALLOWED even without permission - to get rid of it!)
+  pickup: true                # Picking up the item (BLOCKED - only those with permission can pick up)
+  move-inventory: true        # Moving in inventory
+  break-block: true           # Breaking blocks
+  place-block: true           # Placing blocks
+  attack: true                # Attacking entities
+  shoot-bow: true             # Shooting with bow
+
+# Sound played when an action is blocked
+block-sound:
+  enabled: true
+  sound: "ENTITY_VILLAGER_NO"  # Vanilla Minecraft sound
+  volume: 1.0
+  pitch: 1.0
+
+# Debug system
+debug: false

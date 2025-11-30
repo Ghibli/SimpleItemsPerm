@@ -1,0 +1,17 @@
+name: SimpleItemsPerms
+version: '1.1.1'
+main: it.alessiogta.simpleItemsPerms.SimpleItemsPerms
+api-version: '1.21'
+author: AlessioGTAII
+description: Sistema di permessi per items specifici
+
+commands:
+  sip:
+    description: Comando principale di SimpleItemsPerms
+    usage: /<command> [gui|give|remove|check|info|reload]
+    aliases: [simpleitemsperms, itemsperms]
+
+permissions:
+  simpleitemsperms.admin:
+    description: Permesso per utilizzare tutti i comandi amministrativi
+    default: op

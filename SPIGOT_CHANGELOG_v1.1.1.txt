@@ -1,0 +1,63 @@
+[CENTER][SIZE=6][B][COLOR=#FF0000]🚨 HOTFIX v1.1.1 - CRITICAL BUGFIX 🚨[/COLOR][/B][/SIZE][/CENTER]
+
+[SIZE=4][B]Release Date:[/B] November 23, 2025[/SIZE]
+
+[B][COLOR=#FF5722]⚠️ CRITICAL BUG FIXED - UPDATE IMMEDIATELY[/COLOR][/B]
+
+This hotfix resolves a major issue where the permission lore was visible even for players who had the required permission.
+
+---
+
+[SIZE=5][B][COLOR=#4CAF50]🐛 BUG FIXED[/COLOR][/B][/SIZE]
+
+[B]➤ Dynamic Lore System Not Working[/B]
+[LIST]
+[*]✅ [B]FIXED:[/B] Lore "✘ You don't have permission" now correctly hides for players with permission
+[*]✅ [B]FIXED:[/B] Lore comparison now works regardless of color code changes
+[*]✅ [B]FIXED:[/B] Compatible with items created in v1.0.0 and v1.1.0
+[*]✅ [B]FIXED:[/B] Works even if you change the lore message in language files
+[/LIST]
+
+---
+
+[SIZE=5][B][COLOR=#4CAF50]🔧 TECHNICAL CHANGES[/COLOR][/B][/SIZE]
+
+[B]Improved Lore Comparison:[/B]
+[LIST]
+[*]Added [FONT=Courier New]stripColorCodes()[/FONT] method for reliable text comparison
+[*]Removes ALL color codes (legacy [FONT=Courier New]&[/FONT], hex [FONT=Courier New]&#RRGGBB[/FONT], Minecraft native [FONT=Courier New]§[/FONT])
+[*]Compares only plain text, ignoring formatting differences
+[/LIST]
+
+---
+
+[SIZE=5][B][COLOR=#4CAF50]📋 UPDATE INSTRUCTIONS[/COLOR][/B][/SIZE]
+
+[B]1.[/B] Stop your server
+[B]2.[/B] Replace [FONT=Courier New]SimpleItemsPerms-1.1.0.jar[/FONT] with [FONT=Courier New]SimpleItemsPerms-1.1.1.jar[/FONT]
+[B]3.[/B] Start your server
+[B]4.[/B] Run [FONT=Courier New]/sip reload[/FONT] (optional)
+[B]5.[/B] Players should relog or open inventory to update existing items
+
+[B][COLOR=#2196F3]For existing items:[/COLOR][/B]
+[LIST]
+[*]Players just need to [B]relog[/B] or [B]open inventory[/B]
+[*]Alternatively, use [FONT=Courier New]/sip remove[/FONT] and reassign with [FONT=Courier New]/sip gui[/FONT]
+[/LIST]
+
+---
+
+[SIZE=5][B][COLOR=#4CAF50]⚠️ IMPORTANT[/COLOR][/B][/SIZE]
+
+[LIST]
+[*]✅ All permissions continue to work - this was purely a visual bug
+[*]✅ No configuration changes needed
+[*]✅ Backwards compatible with v1.0.0 and v1.1.0 items
+[*]✅ The [FONT=Courier New]hide-for-permitted-players[/FONT] config now works correctly
+[/LIST]
+
+---
+
+[CENTER][B]Thank you for using SimpleItemsPerms![/B] ❤️
+
+[I]If you find this update helpful, please leave a review![/I] ⭐[/CENTER]

@@ -1,0 +1,148 @@
+# ╔═══════════════════════════════════════════════════════════════╗
+# ║            SimpleItemsPerms - Messaggi                        ║
+# ║          Developed with ❤ by AlessioGTAII                    ║
+# ╚═══════════════════════════════════════════════════════════════╝
+
+# Placeholder disponibili:
+# {prefix} - Prefix dal config.yml
+# {player} - Nome del giocatore
+# {permission} - Nome del permesso
+# {item} - Nome dell'item
+
+# Messaggi generali
+no-permission: "{prefix} &cNon hai il permesso per eseguire questo comando!"
+player-not-found: "{prefix} &cGiocatore &e{player} &cnon trovato!"
+player-only: "{prefix} &cQuesto comando può essere eseguito solo da un giocatore!"
+reload-success: "{prefix} &aConfigurazione ricaricata con successo!"
+token-invalid: "{prefix} &cIl link è scaduto o non valido. Riprova."
+
+# Lore items
+lore-no-permission: "&c✘ Non hai i permessi per usarlo"
+
+# Messaggi GUI
+gui-title: "&6Assegna Permesso agli Items"
+gui-confirm-button-name: "&a&lCONFERMA"
+gui-confirm-button-lore:
+  - "&7Clicca per confermare"
+  - "&7l'assegnazione del permesso"
+gui-cancel-button-name: "&c&lANNULLA"
+gui-cancel-button-lore:
+  - "&7Clicca per annullare"
+  - "&7e chiudere la GUI"
+gui-opened: "{prefix} &aInserisci gli items nella GUI e clicca su conferma."
+gui-cancelled: "{prefix} &cOperazione annullata."
+gui-no-items: "{prefix} &cNessun item inserito nella GUI!"
+gui-enter-permission: "{prefix} &6⚠ &eScrivi in chat il nome del permesso"
+gui-chat-prompt: "&6⚠ &eScrivi in chat il permesso da assegnare a: &6{amount} &eitem{plural}"
+gui-chat-cancel: "&7Scrivi &cANNULLA &7per annullare"
+gui-chat-click-cancel: "CLICCA QUI PER ANNULLARE"
+gui-chat-click-cancel-hover: "§cClicca per annullare"
+gui-chat-click-cancel-operation: "§cClicca per annullare l'operazione"
+gui-chat-click-confirm: "CLICCA QUI PER CONFERMARE"
+gui-chat-click-confirm-hover: "§aClicca per confermare"
+gui-permission-assigned: "{prefix} &aPermesso &e{permission} &aassegnato a &e{amount} &aitem!"
+gui-invalid-permission: "{prefix} &cNome del permesso non valido! Usa solo lettere, numeri, underscore e punti."
+
+# Messaggi comando GIVE
+give-usage: "{prefix} &cUtilizzo: &e/sip give <player> <permesso>"
+give-no-item: "{prefix} &cDevi tenere un item in mano!"
+give-success: "{prefix} &aItem con permesso &esimpleitemsperms.{permission} &adato a &e{player}&a!"
+give-success-receiver: "{prefix} &aHai ricevuto un item che richiede il permesso &esimpleitemsperms.{permission}&a!"
+
+# Messaggi comando REMOVE
+remove-usage: "{prefix} &cUtilizzo: &e/sip remove"
+remove-no-item: "{prefix} &cDevi tenere un item in mano!"
+remove-no-permission-found: "{prefix} &cQuesto item non ha alcun permesso assegnato!"
+remove-success: "{prefix} &aPermesso &esimpleitemsperms.{permission} &arimosso dall'item!"
+
+# Messaggi comando CHECK
+check-usage: "{prefix} &cUtilizzo: &e/sip check"
+check-no-item: "{prefix} &cDevi tenere un item in mano!"
+check-no-permission: "{prefix} &eQuesto item non ha alcun permesso assegnato."
+check-has-permission: "{prefix} &aQuesto item richiede il permesso: &esimpleitemsperms.{permission}"
+
+# Messaggi comando INFO
+info:
+  - "&8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  - "&6&lSimpleItemsPerms &fv1.1.0"
+  - "&7Developed with &c❤ &7by &eAlessioGTAII"
+  - ""
+  - "&7Plugin per assegnare permessi specifici agli items"
+  - "&7Perfetto per kit VIP, MVIP ed Elite!"
+  - ""
+  - "&e/sip gui &7- Apri la GUI per assegnare permessi"
+  - "&e/sip give <player> <perm> &7- Dai item con permesso"
+  - "&e/sip remove &7- Rimuovi permesso dall'item"
+  - "&e/sip check &7- Controlla permesso item"
+  - "&e/sip list &7- Visualizza tutti gli items registrati"
+  - "&e/sip reload &7- Ricarica configurazione"
+  - "&e/sip info &7- Mostra queste informazioni"
+  - "&8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+# Messaggi GUI Liste Items
+gui-list:
+  title: "&6Lista Items con Permessi"
+  no-items-name: "&cNessun item registrato"
+  no-items-lore:
+    - "&7Non ci sono items con permessi"
+    - "&7nel registro."
+  prev-page: "&e◀ Pagina Precedente"
+  next-page: "&ePagina Successiva ▶"
+  page-info: "&6Pagina {current}/{total}"
+  total-items: "&7Totale items: &f{amount}"
+  close: "&c✘ Chiudi"
+  item-lore-separator: "&7━━━━━━━━━━━━━━━━━━━━"
+  item-lore-permission: "&ePermesso: &f{permission}"
+  item-lore-creator: "&7Creato da: &f{creator}"
+  item-lore-date: "&7Data: &f{date}"
+  item-lore-times: "&7Volte dato: &f{times}"
+  item-lore-enchants: "&6Incantesimi:"
+  item-lore-enchant-line: "&7- &f{enchant}"
+  item-lore-click: "&aClick per dettagli"
+
+# Messaggi GUI Dettagli Item
+gui-details:
+  title: "&6&lDettagli Item"
+  error-not-found: "&cErrore: Item non trovato nel registro!"
+  lore-permission: "&7▪ &fPermesso: &e{permission}"
+  lore-creator: "&7▪ &fCreato da: &a{creator}"
+  lore-date: "&7▪ &fData creazione: &f{date}"
+  lore-times: "&7▪ &fVolte dato: &6{times}"
+  lore-enchants-title: "&7▪ &fIncantesimi:"
+  lore-enchant-line: "&8  - &b{enchant}"
+  lore-custom-title: "&7▪ &fLore originale:"
+  lore-custom-line: "&8  {lore}"
+  
+  delete-button-name: "&c&l🗑 Elimina dal Registro"
+  delete-button-lore:
+    - ""
+    - "&7Rimuove questo item dal registro"
+    - ""
+    - "&e⚠ &7ATTENZIONE:"
+    - "&7Questo NON elimina gli items"
+    - "&7già dati ai player!"
+    - ""
+    - "&7Rimuove solo dalla lista"
+    - "&7di gestione."
+    - ""
+    - "&cClick per eliminare"
+  
+  back-button-name: "&e← Torna alla Lista"
+  back-button-lore: "&7Ritorna alla lista items"
+  
+  delete-success: "&a✓ Item eliminato dal registro con successo!"
+  delete-info-permission: "&7Permesso: &e{permission}"
+  delete-info-material: "&7Materiale: &e{material}"
+
+# Messaggi utilizzo item bloccato
+item-blocked:
+  use: "{prefix} &cNon hai il permesso per usare questo item! &7(simpleitemsperms.{permission})"
+  equip: "{prefix} &cNon hai il permesso per equipaggiare questo item! &7(simpleitemsperms.{permission})"
+  consume: "{prefix} &cNon hai il permesso per consumare questo item! &7(simpleitemsperms.{permission})"
+  drop: "{prefix} &cNon hai il permesso per droppare questo item! &7(simpleitemsperms.{permission})"
+  pickup: "{prefix} &cNon hai il permesso per raccogliere questo item! &7(simpleitemsperms.{permission})"
+  move: "{prefix} &cNon hai il permesso per spostare questo item! &7(simpleitemsperms.{permission})"
+  break: "{prefix} &cNon hai il permesso per rompere blocchi con questo item! &7(simpleitemsperms.{permission})"
+  place: "{prefix} &cNon hai il permesso per piazzare questo item! &7(simpleitemsperms.{permission})"
+  attack: "{prefix} &cNon hai il permesso per attaccare con questo item! &7(simpleitemsperms.{permission})"
+  shoot: "{prefix} &cNon hai il permesso per usare questo arco! &7(simpleitemsperms.{permission})"
