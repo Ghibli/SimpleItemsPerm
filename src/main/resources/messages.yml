@@ -1,0 +1,16 @@
+# SimpleItemsPerms - Messages Configuration
+# 
+# ⚠️ NOTICE: This file is deprecated!
+# Messages are now loaded from: plugins/SimpleItemsPerms/lang/
+# 
+# To change language, edit config.yml and set:
+# language: "en_US"  (English)
+# language: "it_IT"  (Italian)
+#
+# Then use /sip reload
+#
+# This file is kept for backward compatibility only.
+
+# Language files location:
+# - lang/messages_en_US.yml (English)
+# - lang/messages_it_IT.yml (Italian)

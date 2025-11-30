@@ -1,0 +1,148 @@
+# ╔═══════════════════════════════════════════════════════════════╗
+# ║            SimpleItemsPerms - English Messages                ║
+# ║          Developed with ❤ by AlessioGTAII                    ║
+# ╚═══════════════════════════════════════════════════════════════╝
+
+# Available placeholders:
+# {prefix} - Prefix from config.yml
+# {player} - Player name
+# {permission} - Permission name
+# {item} - Item name
+
+# General messages
+no-permission: "{prefix} &cYou don't have permission to use this command!"
+player-not-found: "{prefix} &cPlayer &e{player} &cnot found!"
+player-only: "{prefix} &cThis command can only be used by players!"
+reload-success: "{prefix} &aConfiguration reloaded successfully!"
+token-invalid: "{prefix} &cThe link has expired or is invalid. Try again."
+
+# Item lore
+lore-no-permission: "&c✘ You don't have permission to use this"
+
+# GUI messages
+gui-title: "&6Assign Permission to Items"
+gui-confirm-button-name: "&a&lCONFIRM"
+gui-confirm-button-lore:
+  - "&7Click to confirm"
+  - "&7permission assignment"
+gui-cancel-button-name: "&c&lCANCEL"
+gui-cancel-button-lore:
+  - "&7Click to cancel"
+  - "&7and close the GUI"
+gui-opened: "{prefix} &aInsert items in the GUI and click confirm."
+gui-cancelled: "{prefix} &cOperation cancelled."
+gui-no-items: "{prefix} &cNo items in the GUI to assign permission!"
+gui-enter-permission: "{prefix} &6⚠ &eType the permission name in chat"
+gui-chat-prompt: "&6⚠ &eType the permission to assign to: &6{amount} &eitem{plural}"
+gui-chat-cancel: "&7Type &cCANCEL &7to cancel"
+gui-chat-click-cancel: "CLICK HERE TO CANCEL"
+gui-chat-click-cancel-hover: "§cClick to cancel"
+gui-chat-click-cancel-operation: "§cClick to cancel the operation"
+gui-chat-click-confirm: "CLICK HERE TO CONFIRM"
+gui-chat-click-confirm-hover: "§aClick to confirm"
+gui-permission-assigned: "{prefix} &aPermission &e{permission} &aassigned to &6{amount} &aitems!"
+gui-invalid-permission: "{prefix} &cInvalid permission! Use only letters, numbers, dots and underscores."
+
+# Give command messages
+give-usage: "{prefix} &cUsage: &e/sip give <player> <permission>"
+give-no-item: "{prefix} &cYou must hold an item in your hand!"
+give-success: "{prefix} &aItem with permission &esimpleitemsperms.{permission} &agiven to &6{player}&a!"
+give-success-receiver: "{prefix} &aYou received an item with permission &esimpleitemsperms.{permission}&a!"
+
+# Remove command messages
+remove-usage: "{prefix} &cUsage: &e/sip remove"
+remove-no-item: "{prefix} &cYou must hold an item in your hand!"
+remove-no-permission-found: "{prefix} &cThis item has no permission assigned!"
+remove-success: "{prefix} &aPermission &esimpleitemsperms.{permission} &aremoved from the item!"
+
+# Check command messages
+check-usage: "{prefix} &cUsage: &e/sip check"
+check-no-item: "{prefix} &cYou must hold an item in your hand!"
+check-no-permission: "{prefix} &eThis item has no permission assigned."
+check-has-permission: "{prefix} &aThis item requires permission: &esimpleitemsperms.{permission}"
+
+# Info command
+info:
+  - "&8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  - "&6&lSimpleItemsPerms &fv1.1.0"
+  - "&7Developed with &c❤ &7by &eAlessioGTAII"
+  - ""
+  - "&7Plugin to assign specific permissions to items"
+  - "&7Perfect for VIP, MVIP and Elite kits!"
+  - ""
+  - "&e/sip gui &7- Open GUI to assign permissions"
+  - "&e/sip give <player> <perm> &7- Give item with permission"
+  - "&e/sip remove &7- Remove permission from item"
+  - "&e/sip check &7- Check item permission"
+  - "&e/sip list &7- List all registered items"
+  - "&e/sip reload &7- Reload configuration"
+  - "&e/sip info &7- Show this information"
+  - "&8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+# GUI Items List messages
+gui-list:
+  title: "&6Items List with Permissions"
+  no-items-name: "&cNo registered items"
+  no-items-lore:
+    - "&7There are no items with"
+    - "&7permissions in the registry."
+  prev-page: "&e◀ Previous Page"
+  next-page: "&eNext Page ▶"
+  page-info: "&6Page {current}/{total}"
+  total-items: "&7Total items: &f{amount}"
+  close: "&c✘ Close"
+  item-lore-separator: "&7━━━━━━━━━━━━━━━━━━━━"
+  item-lore-permission: "&ePermission: &f{permission}"
+  item-lore-creator: "&7Created by: &f{creator}"
+  item-lore-date: "&7Date: &f{date}"
+  item-lore-times: "&7Times given: &f{times}"
+  item-lore-enchants: "&6Enchantments:"
+  item-lore-enchant-line: "&7- &f{enchant}"
+  item-lore-click: "&aClick for details"
+
+# GUI Item Details messages
+gui-details:
+  title: "&6&lItem Details"
+  error-not-found: "&cError: Item not found in registry!"
+  lore-permission: "&7▪ &fPermission: &e{permission}"
+  lore-creator: "&7▪ &fCreated by: &a{creator}"
+  lore-date: "&7▪ &fCreation date: &f{date}"
+  lore-times: "&7▪ &fTimes given: &6{times}"
+  lore-enchants-title: "&7▪ &fEnchantments:"
+  lore-enchant-line: "&8  - &b{enchant}"
+  lore-custom-title: "&7▪ &fOriginal lore:"
+  lore-custom-line: "&8  {lore}"
+  
+  delete-button-name: "&c&l🗑 Delete from Registry"
+  delete-button-lore:
+    - ""
+    - "&7Removes this item from registry"
+    - ""
+    - "&e⚠ &7WARNING:"
+    - "&7This does NOT delete items"
+    - "&7already given to players!"
+    - ""
+    - "&7Only removes from the"
+    - "&7management list."
+    - ""
+    - "&cClick to delete"
+  
+  back-button-name: "&e← Back to List"
+  back-button-lore: "&7Return to items list"
+  
+  delete-success: "&a✓ Item successfully deleted from registry!"
+  delete-info-permission: "&7Permission: &e{permission}"
+  delete-info-material: "&7Material: &e{material}"
+
+# Item blocked messages
+item-blocked:
+  use: "{prefix} &cYou don't have permission to use this item! &7(simpleitemsperms.{permission})"
+  equip: "{prefix} &cYou don't have permission to equip this item! &7(simpleitemsperms.{permission})"
+  consume: "{prefix} &cYou don't have permission to consume this item! &7(simpleitemsperms.{permission})"
+  drop: "{prefix} &cYou don't have permission to drop this item! &7(simpleitemsperms.{permission})"
+  pickup: "{prefix} &cYou don't have permission to pick up this item! &7(simpleitemsperms.{permission})"
+  move: "{prefix} &cYou don't have permission to move this item! &7(simpleitemsperms.{permission})"
+  break: "{prefix} &cYou don't have permission to break blocks with this item! &7(simpleitemsperms.{permission})"
+  place: "{prefix} &cYou don't have permission to place this item! &7(simpleitemsperms.{permission})"
+  attack: "{prefix} &cYou don't have permission to attack with this item! &7(simpleitemsperms.{permission})"
+  shoot: "{prefix} &cYou don't have permission to use this bow! &7(simpleitemsperms.{permission})"
